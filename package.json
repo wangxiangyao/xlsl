@@ -52,9 +52,11 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.2.1",
     "koa": "^2.3.0",
     "koa-body": "^2.3.0",
-    "koa-router": "^7.2.1"
+    "koa-router": "^7.2.1",
+    "redux-logger": "^3.0.6"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -100,15 +102,5 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "proxy" : {
-    "/getOrders": {
-      "target": "http://localhost:2000",
-      "ws": true
-    },
-    "/getGoods": {
-      "target": "http://localhost:2000",
-      "ws": true
-    }
   }
 }

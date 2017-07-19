@@ -1,0 +1,42 @@
+.navigation {
+  height: 50px;
+  border-top: 1px solid #eee;
+}
+.nav-wrapper {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+.nav-item {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+}
+.nav-link {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.icon {
+  font-size: 21px;
+}
+.new-order {
+  position: absolute;
+  top: -16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #3FC8CF;
+}
+.new-order-icon {
+  font-size: 30px;
+  color: #fff;
+}

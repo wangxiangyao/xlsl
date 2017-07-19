@@ -1,0 +1,51 @@
+.step-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+}
+
+.step-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.step-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 14px;
+  width: 39px;
+  height: 39px;
+  background: #bbb;
+  color: #fff;
+  border-radius: 50%;
+}
+.step.active .step-circle {
+  background: #3FC8CF;
+}
+.step-text {
+  align-self: flex-end;
+  padding: 5px 0 0;
+  width: 67px;
+  text-align: center;
+  color: #bbb;
+}
+.step.active .step-text {
+
+  color: #3FC8CF;
+}

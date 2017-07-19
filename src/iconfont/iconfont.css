@@ -1,0 +1,62 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1500347884144'); /* IE9*/
+  src: url('iconfont.eot?t=1500347884144#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1500347884144') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1500347884144') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1500347884144#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.icon {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xihuan:before { content: "\e6ff"; }
+
+.icon-yifu1:before { content: "\e69e"; }
+
+.icon-icon:before { content: "\e602"; }
+
+.icon-iconfuzhi:before { content: "\e601"; }
+
+.icon-wuliu:before { content: "\e60a"; }
+
+.icon-sousuo:before { content: "\e614"; }
+
+.icon-bell:before { content: "\e691"; }
+
+.icon-confirm:before { content: "\e696"; }
+
+.icon-contacts:before { content: "\e698"; }
+
+.icon-delete:before { content: "\e69a"; }
+
+.icon-diamond:before { content: "\e69c"; }
+
+.icon-document:before { content: "\e69d"; }
+
+.icon-eye:before { content: "\e6a0"; }
+
+.icon-folder:before { content: "\e6a3"; }
+
+.icon-heart:before { content: "\e6a6"; }
+
+.icon-like:before { content: "\e6aa"; }
+
+.icon-location:before { content: "\e6ab"; }
+
+.icon-plus:before { content: "\e6b3"; }
+
+.icon-unlike:before { content: "\e6c3"; }
+
+.icon-yifu:before { content: "\e600"; }
+
+.icon-hezi:before { content: "\e6f6"; }
+
+.icon-yifu-:before { content: "\e603"; }
+
+.icon-cha-copy:before { content: "\e700"; }

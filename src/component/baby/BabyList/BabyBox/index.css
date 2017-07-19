@@ -1,0 +1,49 @@
+.baby-box {
+  display: flex;
+  position: relative;
+  padding: 15px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.baby-pic {
+  margin: 0 20px;
+  width: 77px;
+  height: 91px;
+  background-color: #ccc;
+}
+.baby-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 0 10px 0 0 ;
+}
+.baby-info > .name {
+  margin: 0 0;
+  font-size: 18px;
+  line-height: 25px;
+  color: #333;
+}
+.baby-info > .weight, .baby-info > .height {
+  margin: 0 0;
+  line-height: 20px;
+  font-size: 14px;
+  color: #888;
+}
+.baby-info > .completion-rate {
+  margin: 0 0;
+  line-height: 17px;
+  font-size: 12px;
+  color: #3fc8cf;
+}
+.baby-info > .completion-rate.warning {
+  color: #FF5B05;
+}
+.more-info {
+  position: absolute;
+  padding: 10px;
+  right: 0;
+  top: 50%;
+  margin-top: -19px;
+}
