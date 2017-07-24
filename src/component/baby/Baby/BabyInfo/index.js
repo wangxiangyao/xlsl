@@ -1,17 +1,60 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
+import { Link } from "react-router-dom"
+
+import Input from "../../../Input"
+import Select from "../../../Select"
+import Title from "../../../Title"
+import Gap from "../../../Gap"
+import Button from "../../../Button"
+import SkinColorSelect from "./SkinColorSelect"
+import CheckBoxGroup from "../../../CheckBoxGroup"
+import BabyStep from "../BabyStep";
 
 
 export default class BabyInfo extends Component {
-  constructor(props) {
-    super(props)
-  }
+  /*
+  生命周期钩子函数
+  */
+  // TODO: 宝宝生日组件
+  // TODO: 宝宝传图片
+
 
   render() {
+    const { baby,handleChangeBabyItem } = this.props
+    console.log(this.props)
     return(
-      <div>我是宝贝基本信息</div>
+      <div>
+        <BabyStep step={0} completionRate={baby.completion_rate ? baby.completion_rate : 0}/>
+        <Gap></Gap>
+        <Input placeholder="请输入您对宝贝的爱称" addonBefore="宝宝昵称" handleChangeBabyItem={handleChangeBabyItem} propName="name" item={baby.name}></Input>
+        <Select onSelect={this.props.handleChangeBabyItem} option={{
+          map: "sex",
+          item: baby.sex
+        }} text="宝宝性别" ></Select>
+        <Gap></Gap>
+        <Input placeholder="请输入宝贝身高" addonBefore="宝宝身高（CM）" handleChangeBabyItem={handleChangeBabyItem} propName="height" item={baby.height}></Input>
+        <Input placeholder="请输入宝贝体重，注意是KG哦~" addonBefore="宝宝体重（KG）" handleChangeBabyItem={handleChangeBabyItem} propName="weight" item={baby.weight}></Input>
+        <Gap></Gap>
+        <Input placeholder="平时上装尺寸" addonBefore="宝贝上装尺寸（CM）" handleChangeBabyItem={handleChangeBabyItem} propName="top_size" item={baby.top_size}></Input>
+        <Input placeholder="平时下装尺寸" addonBefore="宝贝下装尺寸（CM）" handleChangeBabyItem={handleChangeBabyItem} propName="bottom_size" item={baby.bottom_size}></Input>
+        <Gap></Gap>
+        <Title text="宝宝的肤色（非必填）" isRequired={false} ></Title>
+        <SkinColorSelect handleChangeBabyItem={this.props.handleChangeBabyItem} skinColor={this.props.baby.skin_color}></SkinColorSelect>
+        <Gap></Gap>
+        <Title text="宝贝体态特征（非必填）" isRequired={false}></Title>
+        <CheckBoxGroup option={{map: "babyBody", item: baby.baby_body}} propName="baby_body" handleChange={this.props.handleChangeBabyItem}></CheckBoxGroup>
+        <Button style={{fontSize: "18px", padding: "11px"}}>
+          <Link to={`/baby/${this.props.isNew ? "new" :baby.id}/style`}>
+          好了，下一步
+          </Link>
+        </Button>
+      </div>
     )
   }
 }
 
-BabyInfo.propTypes = {}
+BabyInfo.propTypes = {
+  baby: PropTypes.object,
+  handleChangeBabyItem: PropTypes.func.isRequired,
+}

@@ -6,9 +6,6 @@ import "./step.css"
 
 
 export default class Step extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     let icon = this.props.icon;
@@ -33,7 +30,7 @@ export default class Step extends Component {
               )
             }
             return (
-              <div className="step-box" key={index}>
+              <div className={`step-box ${active}`} key={index}>
                 <div className="step-top">
                   <StepLine className={`${active}`}></StepLine>
                   <div className="step-circle">

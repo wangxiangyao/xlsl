@@ -1,0 +1,31 @@
+.my-select-wrapper {
+  display: flex;
+  border-bottom: 1px solid #d9d9d9;
+}
+.my-select-wrapper .select {
+  flex: 1;
+}
+.my-select-wrapper .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 7px;
+  height: 44px;
+}
+
+/* 重写antd样式 */
+.ant-select-selection {
+  height: 44px;
+  padding-left: 20px;
+  border: none;
+  border-radius: 0;
+}
+.ant-select-selection:hover, .ant-select-selection:focus {
+  border: none;
+}
+.ant-select-selection__rendered {
+  height: 44px;
+  line-height: 44px;
+}

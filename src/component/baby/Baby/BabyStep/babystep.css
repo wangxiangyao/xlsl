@@ -1,3 +1,24 @@
 .babystep-wrapper {
-  padding: 0 40px;
+  padding: 10px 40px;
+}
+.progress {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.progress-text {
+  display: block;
+  padding: 10px 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FF5B05;
+}
+.progress-text.completion {
+  color: #3fc8cf;
+}
+
+/* 重写antd样式 */
+.ant-progress-status-success .ant-progress-bg {
+  background-color: #3fc8cf;
 }

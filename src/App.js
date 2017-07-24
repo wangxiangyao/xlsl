@@ -31,7 +31,7 @@ class App extends Component {
               <Route path="/about" component={About}/>
               <Route path="/member" component={Member}/>
               <Route path="/order" component={OrderList}/>
-              <Route path="/baby" component={Baby} >
+              <Route path="/baby" component={Baby}>
               </Route>
             </Content>
             <Footer className="footer">

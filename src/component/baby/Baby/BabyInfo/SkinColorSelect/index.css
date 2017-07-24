@@ -1,0 +1,30 @@
+.skin-color-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #d9d9d9;
+}
+.skin-color-option {
+  display: flex;
+  height: 44px;
+}
+.skin-color, .skin-text, .icon-skin {
+  display: flex;
+  align-items: center;
+  padding: 12px 0 ;
+}
+.skin-color, .icon-skin {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.icon-skin {
+  font-size: 16px;
+  color: #3fc8cf;
+}
+.icon-skin.hidden {
+  display: none;
+}
+.skin-text {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+}

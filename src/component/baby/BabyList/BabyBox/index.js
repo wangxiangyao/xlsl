@@ -17,7 +17,7 @@ export default class BabyBox extends Component {
     return (
       <div className="baby-box">
         <div className="baby-pic">
-          <img />
+          <img alt="宝宝图片"/>
         </div>
         <div className="baby-info">
           <h1 className="name">{baby.name}</h1>

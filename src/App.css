@@ -10,6 +10,8 @@
 }
 .stage {
   flex: 1;
+  overflow: auto;
+  height: calc(100vh - 50px);
   background-color: #f5f5f9;
-  padding: 10px 0 16px;
+  padding: 0 0 16px;
 }

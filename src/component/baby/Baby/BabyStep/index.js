@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
 import Step from "../../../Step";
+import Progress from "antd/lib/progress"
+import "antd/lib/progress/style/css"
+
 import "./babystep.css"
 
 export default class BabyStep extends Component {
   constructor(props) {
     super(props)
+
+    //TODO:文字和图标抽象，根据外部传入条件，选择显示何种文字和图标
 
     // 初始化描述和图标
     this.state = {
@@ -27,8 +32,14 @@ export default class BabyStep extends Component {
     const { text, icon } = this.state
 
     return (
-      <div className="babystep-wrapper">
-        <Step step={step} text={text} icon={icon}/>
+      <div>
+        <div className="babystep-wrapper">
+          <Step step={step} text={text} icon={icon}/>
+        </div>
+        <div className="progress">
+          <span className={`progress-text ${completionRate === 100 ? "completion" : ""}`}>完成度：{completionRate}%</span>
+          <Progress percent={completionRate} status={completionRate === 100 ? "success" : "active"} showInfo={false} strokeWidth={2} style={{fontSize: 0}}/>
+        </div>
       </div>
     )
   }

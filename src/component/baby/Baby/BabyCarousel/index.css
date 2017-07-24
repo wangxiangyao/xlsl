@@ -1,0 +1,27 @@
+
+.carousel-buttons-wrapper {
+  display: flex;
+}
+.carousel-button-box {
+  flex: 1;
+}
+.carousel-button-box .my-button {
+  background-color: #fff;
+  color: #3fc8cf;
+  border: 1px solid #3fc8cf;
+}
+.carousel-button-box.active .my-button {
+  background-color: #3fc8cf;
+  color: #fff;
+}
+.carsousel-current-step {
+  padding: 10px 20px 0 20px;
+  text-align: right;
+  color: #3fc8cf;
+}
+.carousel-step-img-box {
+  height: 231px;
+}
+.carousel-step-img {
+  width: 100%;
+}

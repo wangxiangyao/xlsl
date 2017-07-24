@@ -1,0 +1,28 @@
+.my-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+.my-slider-text {
+  font-size: 12px;
+  line-height: 22px;
+  color: #333;
+}
+
+/* 重写antd样式 */
+.my-slider-wrapper .ant-slider-handle {
+  border-color: #3fc8cf;
+}
+.my-slider-wrapper:hover .ant-slider-handle {
+  border-color: #38A9AF;
+}
+.my-slider-wrapper .ant-slider-handle:hover {
+  border-color: #38A9AF;
+}
+
+.my-slider-wrapper .ant-slider:hover .ant-slider-track {
+  background-color: #3fc8cf;
+}
+.my-slider-wrapper .ant-slider-track {
+  background-color: #3fc8cf;
+}

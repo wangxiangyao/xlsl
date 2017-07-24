@@ -9,9 +9,7 @@ import "./button.css"
 font-size,padding需要从外部传入
 */
 export default class MyButton extends Component {
-  constructor(props) {
-    super(props)
-  }
+
   render() {
     return (
       <div className="button-wrapper">

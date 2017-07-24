@@ -1,0 +1,33 @@
+.color-pick {
+  display: flex;
+  flex-direction: column;
+}
+
+.color-pick-item {
+  display: flex;
+  height: 44px;
+}
+
+.color-ract-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+.color-text {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.color-action-box {
+  display: flex;
+  align-items: center;
+}
+
+.color-action {
+  padding: 0 10px;
+  color: #d9d9d9;
+}
+.color-action.active {
+  color: #3fc8cf;
+}

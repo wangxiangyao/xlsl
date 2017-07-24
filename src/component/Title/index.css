@@ -1,0 +1,10 @@
+.title {
+  padding: 10px 7px;
+  border-bottom: 1px solid #d9d9d9;
+  line-height: 18px;
+  font-size: 14px;
+  color: #888;
+}
+.title.need {
+  color: #333;
+}
