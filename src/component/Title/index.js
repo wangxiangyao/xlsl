@@ -8,7 +8,11 @@ export default class MyInput extends Component {
   render() {
     return(
       <div className={`title ${this.props.isRequired ? "need" : ""}`}>
-        {this.props.text}
+        <div className="title-left" style={this.props.style}>{this.props.text}</div>
+        <div className="title-right">
+          {this.props.children}
+        </div>
+
       </div>
     )
   }

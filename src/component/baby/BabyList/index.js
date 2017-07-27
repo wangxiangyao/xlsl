@@ -24,15 +24,19 @@ export default class BabyList extends Component {
           <BarTop text="宝宝列表">
             <Link to="/baby/new">添加宝宝</Link>
           </BarTop>
-        </div>    
+        </div>
         <div className="baby-list">
           <Gap></Gap>
           {
-            babies.map((baby, index) => {
-              return (
-                <BabyBox baby={baby} key={index }></BabyBox>
-              )
-            })
+            (() => {
+              let arr = [];
+              for(let [key, val] of Object.entries(babies)) {
+                arr.push(
+                  <BabyBox baby={val} key={key}></BabyBox>
+                )
+              }
+              return arr;
+            })()
           }
 
         </div>

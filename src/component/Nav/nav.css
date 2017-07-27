@@ -28,13 +28,14 @@
 .icon {
   font-size: 21px;
 }
-.new-order {
+.navigation .new-order-button {
   position: absolute;
   top: -16px;
   width: 56px;
   height: 56px;
   border-radius: 50%;
   background-color: #3FC8CF;
+  z-index: 9;
 }
 .new-order-icon {
   font-size: 30px;

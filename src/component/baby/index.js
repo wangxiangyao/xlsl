@@ -1,7 +1,12 @@
+import fetch from 'isomorphic-fetch';
+
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux'
+
 import BabyList from "./BabyList";
 import Baby from "./Baby"
+import { fetchIfNeeded, requestBabies, receiveBabies, updataBaby } from '../../actions'
 // import fetchFromServer from "../../HighComponent/fetchFromServer"
 
 /*
@@ -28,182 +33,53 @@ item = {
       其余空白值均为"",（skin_color空白值为null/空字符串""）
 */
 
-export default class BabyDump extends Component {
+class BabyDump extends Component {
   // TODO: 从远程请求到此用户的所有宝宝
   constructor(props) {
     super(props)
-    this.state = {
-      babies: [
-        {
-          "id": 0,
-          "name": "王宝宝1",
-          "sex": 1,
-          "height": 130,
-          "weight": 40,
-          "completion_rate": 100,
-          "birthday": "1500358674392",
-          "top_size": 100,
-          "bottom_size": 80,
-          "hobbies": {
-            "0": 2,
-            "1": 2,
-            "2": 2,
-            "3": 0,
-          },
-          "skin_color": 2,
-          "baby_body": [1, 2, 3],
-          "style": {
-            "0": 1,
-            "2": 0,
-          },
-          "atom": [15, 20],
-          "color": {
-            "3": 1,
-            "11": 0,
-          },
-          "expect": 3,
-          "suit": 1,
-          "attention": [0, 1],
-				  "sundry": [2, 3],
-          "brand": [0, 5, 11],
-          "top_price": [100, 800],
-          "bottom_price": [100, 900],
-          "suit_price": [700, 900],
-          "photo": "",
-          "own_cloth": [],
-        },
-        {
-          "id": 1,
-          "name": "王宝宝2",
-          "sex": 0,
-          "height": 70,
-          "weight": 15,
-          "completion_rate": 95,
-          "birthday": "1500358674392",
-          "top_size": 40,
-          "bottom_size": 20,
-          "hobbies": {
-            "0": 1,
-            "1": 3,
-            "2": 3,
-            "3": 1,
-          },
-
-          "skin_color": 3,
-          "baby_body": [0, 1, 4],
-
-
-          "style": {
-            "0": 1,
-            "1": 0,
-            "2": 3,
-            "3": 2,
-          },
-          "atom": [1, 16],
-          "color": {
-            "5": 1,
-            "6": 0,
-          },
-          "expect": 1,
-          "suit": 2,
-          "attention": [2, 4],
-				  "sundry": [0, 1, 3],
-          "brand": [10, 16, 19],
-          "top_price": [100, 800],
-          "bottom_price": [100, 900],
-          "suit_price": [700, 900],
-          "photo": "",
-          "own_cloth": [],
-        },
-        {
-          "id": 2,
-          "name": "王宝宝3",
-          "sex": 0,
-          "height": 88,
-          "weight": 15,
-          "completion_rate": 88,
-          "birthday": "1500358674392",
-          "top_size": 66,
-          "bottom_size": 33,
-          "hobbies": {
-            "0": 1,
-            "1": 1,
-            "2": 1,
-            "3": 1,
-          },
-
-          "skin_color": 1,
-          "baby_body": [4, 7],
-
-
-          "style": {
-            "0": 0,
-            "1": 1,
-            "2": 2,
-            "3": 3,
-          },
-          "atom": [1, 6, 14, 22],
-          "color": {
-            "10": 1,
-            "16": 0,
-          },
-          "expect": 0,
-          "suit": 1,
-          "attention": [0, 1],
-				  "sundry": [2, 3],
-          "brand": [2, 7, 18],
-          "top_price": [100, 800],
-          "bottom_price": [100, 900],
-          "suit_price": [700, 900],
-          "photo": "",
-          "own_cloth": [],
-        }
-      ],
-      memberId: 0,
-      isFetch: true,
-      itemNum: 22, // 一共需要填写22项
-    }
+    // this.requestBabyData();
   }
 
-
   componentDidMount() {
-    const {memberId} = this.state;
-    let url = `http://localhost:9090/baby/${memberId}/`
-    fetch(url, {
-      method: "POST",
-      headers: {
-        'Content-Type': "application/json",
+    console.log(123)
+    this.requestBabyData();
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   console.log(nextProps)
+  //   this.requestBabyData();
+  // }
+
+  requestBabyData() {
+    const { memberId, dispatch } = this.props;
+    let option = {
+      name: "babies",
+      path: `/baby/${memberId}/`,
+      config: {
+        method: "POST",
       },
-    })
-    .then((res) => {
-      return res.json();
-    }, error => console.log("请求发生错误", error))
-    .then(
-      (json) => {
-        let data = json.data;
-        /*
-        对数据遍历，因为对象属性，都是字符串，所以要找出他们，并解析为对象。
-        因为数组在传递的时候，其值变为了字符串，所以，对于数组也要对其所有值转换为数字
-        */
-        data.map((baby) => {
-          for(let [key, val] of Object.entries(baby)) {
-            if ( typeof val === "string" && val[0] === "{" ) {
-                baby[key] = JSON.parse(val);
-            } else if (Array.isArray(val)){
-              // 如果是数组，每一项转换成数字
-              for (let i = 0, len = val.length; i < len; i++) {
-                baby[key][i] = Number(val[i]);
-              }
-            }
-          }
-          return true
-        })
-        this.setState({
-          babies: data,
-          isFetch: false,
-        })
-      }
-    )
+    }
+
+    let fetchBaby = (url, option) => {
+      dispatch(requestBabies())
+      fetch(url, option)
+      .then((res) => {
+        console.log(1);
+        return res.json();
+      }, error => console.log("请求发生错误", error))
+      .then(
+        (json) => {
+          let data = json.data;
+          dispatch(receiveBabies(data))
+        }
+      )
+      .catch(
+        (e) => {
+          console.log(e);
+        }
+      )
+    }
+    dispatch(fetchIfNeeded(option, fetchBaby))
   }
 
 
@@ -212,18 +88,20 @@ export default class BabyDump extends Component {
   每个改变，都会传递，改变项item、改变的宝宝在babies中的位置index，两个参数。
   要做的处理有，如果需要，更新改变率，更新对应宝宝
   */
-  handleChangeBabyItem = (item, index) => {
-    const { babies } = this.state;
-
-    // 为了覆盖，深拷贝一下babies数组
-    let source = JSON.parse(JSON.stringify(babies));
-
-    let baby = source[index]
-    baby.completion_rate = this.calcCompletionRate(item, baby)
-    this.updataObject(baby, item);
-    this.setState({
-      babies: source,
-    });
+  handleChangeBabyItem = (index, baby) => {
+    const { dispatch } = this.props
+    dispatch(updataBaby(index, baby))
+    // const { babies } = this.state;
+    //
+    // // 为了覆盖，深拷贝一下babies数组
+    // let source = JSON.parse(JSON.stringify(babies));
+    //
+    // let baby = source[index]
+    // baby.completion_rate = this.calcCompletionRate(item, baby)
+    // this.updataObject(baby, item);
+    // this.setState({
+    //   babies: source,
+    // });
   }
 
   /*
@@ -353,14 +231,10 @@ export default class BabyDump extends Component {
     return source;
   }
 
-  fetchBabyIfNeed() {
-
-  }
-
   render() {
-    const { babies, isFetch } = this.state;
-
-    if (isFetch) {
+    const { babies, memberId } = this.props;
+    console.log(this.props)
+    if (babies.isFetching) {
       return (
         <div>正在加载</div>
       )
@@ -369,33 +243,47 @@ export default class BabyDump extends Component {
     return (
         <div>
           <Route exact strict path="/baby" render={() => {
-            console.log(babies)
-            return (<BabyList babies={babies}></BabyList>)
+            return (<BabyList babies={babies.byId}></BabyList>)
           }}>
           </Route>
           <Route path="/baby/:id" render={(props) => {
             let id = props.match.params.id,
                 baby,
                 index; // 记录此宝宝，在babies数组中的位置
+                console.log(id)
             if (id === 'new') {
               return (
-                <Baby index="new" {...props} itemNum={this.state.itemNum} memberId={this.state.memberId}/>
+                <Baby index="new" {...props} itemNum={babies.itemNum} memberId={memberId}/>
               )
             }
-            for (let [key, value] of babies.entries()) {
-              if (Number(value.id) === Number(id)) {
-                baby = value;
-                index = key;
+            for (let [key, value] of Object.entries(babies.byId)) {
+
+              if (key !== id) {
+                continue;
               }
+              baby = value;
+              id = key;
+              break;
             }
             return (
-              <Baby {...props} baby={baby} index={index}  handleChangeBabyItem={this.handleChangeBabyItem.bind(this)}></Baby>
+              <Baby {...props} baby={baby} index={id}  handleChangeBabyItem={this.handleChangeBabyItem.bind(this)}></Baby>
             )
           }} />
         </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    babies: state.babies,
+    memberId: state.member.id,
+    baseUrl: state.fetch.baseUrl,
+  }
+}
+
+export default connect(mapStateToProps)(BabyDump)
+
 //
 // BabyDump = fetchFromServer(BabyDump, "http://localhost:9090")
 // export default BabyDump

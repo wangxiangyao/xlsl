@@ -8,7 +8,7 @@ export default (WrappedComponent) => {
     constructor(props) {
       super(props)
       const { baby, index } = this.props;
-      if (index === "new") {
+      if (index === "new" ||　!baby) {
         this.state = {
           baby: {
             "name": "",
@@ -21,25 +21,25 @@ export default (WrappedComponent) => {
             "bottom_size": "",
             "hobbies": "",
             "skin_color": null,
-            "baby_body": "",
+            "baby_body": [],
             "style": "",
-            "atom": "",
+            "atom": [],
             "color": "",
             "expect": -1,
             "suit": -1,
-            "attention": "",
-            "sundry": "",
-            "brand": "",
-            "top_price": "",
-            "bottom_price": "",
-            "suit_price": "",
+            "attention": [],
+            "sundry": [],
+            "brand": [],
+            "top_price": [100, 800],
+            "bottom_price": [100, 800],
+            "suit_price": [100, 800],
             "photo": "",
           },
         }
         return
       } else {
         this.state = {
-          baby,
+          baby: {...baby},
         }
       }
     }
@@ -102,22 +102,22 @@ export default (WrappedComponent) => {
       return completionRate
     }
 
-    // 包装index，告诉父组件，现在改变的是哪个宝宝
-    handleChangeBabyItemOld(item, index) {
-      const {handleChangeBabyItem} = this.props;
-      handleChangeBabyItem(item, index);
-    }
 
     // 处理新宝宝的改变
-    handleChangeBabyItemNew(item, index) {
+    handleChangeBabyItem(item, index) {
       const { baby } = this.state;
       let source = JSON.parse(JSON.stringify(baby));
       source.completion_rate = this.calcCompletionRate(item);
       console.log(source.completion_rate)
       this.updataObject(source, item);
-      this.setState({
-        baby: source,
-      });
+      if (index === "new") {
+        this.setState({
+          baby: source,
+        })
+      } else {
+        this.props.handleChangeBabyItem(index, source);
+      }
+
     }
 
     updataObject(source, data) {
@@ -164,10 +164,11 @@ export default (WrappedComponent) => {
       const { index, baby } = this.props
 
       return (
-        <WrappedComponent handleChangeBabyItem={index === "new" ? this.handleChangeBabyItemNew.bind(this) : this.handleChangeBabyItemOld.bind(this)}
+        <WrappedComponent handleChangeBabyItem={this.handleChangeBabyItem.bind(this)}
             index={index}
             baby={baby ? baby : this.state.baby}
             memberId={this.props.memberId}
+            history={this.props.history}
          />
       )
     }

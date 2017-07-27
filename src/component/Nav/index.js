@@ -27,7 +27,7 @@ export default class Navigation extends Component {
             </NavLink>
           </Menu.Item>
           <Menu.Item key="3" className="nav-item">
-            <NavLink to="/order/new" className="nav-link new-order">
+            <NavLink to="/order/new" className="nav-link new-order-button">
               <i className="icon icon-yifu- new-order-icon"></i>
             </NavLink>
           </Menu.Item>

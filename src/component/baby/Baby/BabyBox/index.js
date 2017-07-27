@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
+import { connect } from 'react-redux'
+import { addBaby, fetchData } from '../../../../actions'
 
 import Select from "../../../Select"
 import Title from "../../../Title"
@@ -11,18 +13,18 @@ import BabyCarousel from "../BabyCarousel"
 import Slider from "../../../Slider"
 
 
-export default class BabyBox extends Component {
+class BabyBox extends Component {
 
   /*
   生命周期钩子函数
   */
 
   endProcess() {
-    const { isNew, baby } = this.props
+    const { isNew, baby, dispatch, history } = this.props
     let myBaby = JSON.parse(JSON.stringify(baby))
     // 因为后台不能接受空对象、空数组形式的json，所以在这里进行判断，如果是空，就转换为空字符串
     for( let [key, val] of Object.entries(myBaby)) {
-      if (JSON.stringify(val) === "[]" || JSON.stringify(val) === "{}") {
+      if (JSON.stringify(val) === "{}") {
         myBaby[key] = ""
       }
       if (typeof val === "object") {
@@ -33,38 +35,69 @@ export default class BabyBox extends Component {
       }
     }
 
+    let oneBaby = JSON.stringify(myBaby)
     if (isNew) {
       myBaby.member_id = this.props.memberId;
       console.log(myBaby)
-      let url = `http://localhost:9090/baby/`
-      fetch(url, {
-        method: "POST",
-        headers: {
-          'Content-Type': "application/json",
-        },
-        body: JSON.stringify(myBaby),
-      })
-      .then((res) => {
-        if (res.ok) {
-          // window.location.pathname = "baby";
-          console.log(res.body)
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      })
+      dispatch(
+        fetchData(
+              {
+                path: "/baby/",
+                config: {
+                  method: "POST",
+                  body: JSON.stringify(myBaby),
+                }
+              },
+              (url, option) => {
+                console.log(option)
+                fetch(url, option)
+                .then((res) => {
+                  if (res.ok) {
+                    return res.json()
+                  }
+                })
+                .then((json) => {
+                  console.log(json, myBaby)
+                  // dispatch(addBaby(id, baby))
+                  history.push("/order/new")
+                })
+                .catch((e) => {
+                  console.log(e);
+                })
+              }
+            )
+          )
     } else {
-      let url = `http://localhost:9090/baby/${myBaby.id}/`
-      fetch(url, {
-        method: "POST",
-        body: baby,
-      })
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+      console.log(1)
+      dispatch(
+        fetchData(
+          {
+            path: `/baby/${myBaby.id}/`,
+            config: {
+              method: "PUT",
+              body: JSON.stringify(myBaby),
+            }
+          },
+          (url, option) => {
+            console.log(url, option)
+            fetch(url, option)
+            .then((res) => {
+              return res.json()
+              // window.location.pathname = "baby";
+            })
+            .then((json) => {
+              if (json.code === "ok") {
+                history.push("/baby")
+              } else {
+                console.log(json.message)
+              }
+            })
+            .catch((e) => {
+              console.log(e)
+            })
+          }
+        )
+      )
     }
   }
 
@@ -72,7 +105,6 @@ export default class BabyBox extends Component {
 
   render() {
     const { baby,handleChangeBabyItem } = this.props
-
     return(
       <div>
         <BabyStep step={2} completionRate={baby.completion_rate}/>
@@ -113,3 +145,5 @@ BabyBox.propTypes = {
   handleChangeBabyItem: PropTypes.func.isRequired,
 
 }
+
+export default connect()(BabyBox)

@@ -1,4 +1,6 @@
 .title {
+  display: flex;
+  justify-content: space-between;
   padding: 10px 7px;
   border-bottom: 1px solid #d9d9d9;
   line-height: 18px;
@@ -7,4 +9,10 @@
 }
 .title.need {
   color: #333;
+}
+.title .title-left {
+  align-self: flex-start;
+}
+.title .title-right {
+  align-self: flex-end;
 }

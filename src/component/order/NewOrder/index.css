@@ -1,0 +1,32 @@
+.new-order {
+  position:absolute;
+  z-index: 10;
+  top: 0;
+  width: 100vw;
+  padding-bottom: 20px;
+  background-color: #fff;
+}
+
+.new-order > .new-order-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  color: #3FC8CF;
+  background-color: #fff;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.vip-wrapper {
+  padding: 10px;
+}
+.vip-title {
+  line-height: 24px;
+  font-size: 17px;
+  color: #000;
+}
+.vip-text {
+  line-height: 20px;
+  font-size: 14px;
+  color: #888;
+}

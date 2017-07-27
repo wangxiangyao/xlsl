@@ -1,0 +1,22 @@
+.order-address-wrapper .item {
+  color: #3fc8cf;
+}
+.order-address {
+  padding: 10px;
+}
+.order-address .name {
+  font-size: 17px;
+  line-height: 24px;
+  color: #000;
+}
+.order-address .phone,
+.order-address .position,
+.order-address .addr {
+  font-size: 14px;
+  line-height: 20px;
+  color: #888;
+}
+.order-address-action {
+  display: flex;
+  padding: 0 0 20px
+}

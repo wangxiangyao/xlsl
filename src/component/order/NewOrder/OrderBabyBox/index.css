@@ -1,0 +1,25 @@
+.order-baby-box {
+  display: flex;
+  flex-direction: column;
+}
+.order-baby-box > .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  height: 44px;
+  border-bottom: none;
+}
+.order-baby-box > .title > .text {
+  color: #d9d9d9;
+}
+.order-baby-box > .title > .new-baby > .item {
+  color: #3fc8cf;
+}
+
+.order-baby-box .baby-stage {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
+  background-color: #fff;
+}

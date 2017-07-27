@@ -90,7 +90,7 @@ class Baby extends Component {
                 () => <BabyStyle handleChangeBabyItem={this.handleChangeBabyItem.bind(this)} baby={baby} isNew={this.state.isNew}></BabyStyle>
               } />
             <Route exact strict path="/baby/:id/box" render={
-                () => <BabyBox handleChangeBabyItem={this.handleChangeBabyItem.bind(this)} baby={baby} index={index} isNew={this.state.isNew} memberId={this.props.memberId}></BabyBox>
+                () => <BabyBox handleChangeBabyItem={this.handleChangeBabyItem.bind(this)} baby={baby} index={index} isNew={this.state.isNew} memberId={this.props.memberId} history={this.props.history}></BabyBox>
               } />
           </div>
         </div>
