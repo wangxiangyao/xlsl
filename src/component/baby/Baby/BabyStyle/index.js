@@ -37,7 +37,7 @@ export default class BabyStyle extends Component {
         <Gap></Gap>
         <Title text="喜欢的细节" isRequired={false}></Title>
         <CheckBoxGroup option={{map: "atom", item: baby.atom}} propName="atom" handleChange={handleChangeBabyItem}></CheckBoxGroup>
-        <Button style={{fontSize: "18px", padding: "11px"}}>
+        <Button style={{fontSize: "36px", padding: "22px"}}>
           <Link to={`/baby/${this.props.isNew ? "new" : baby.id}/box`}>
           好了，下一步
           </Link>

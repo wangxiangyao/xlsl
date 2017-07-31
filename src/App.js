@@ -20,6 +20,7 @@ import Member from './component/Member';
 import Order from './component/order';
 import NewOrder from './component/order/NewOrder';
 import Baby from "./component/baby";
+import Login from "./component/login/index.js"
 
 // 推荐在入口文件全局设置 locale
 import 'moment/locale/zh-cn';
@@ -45,6 +46,8 @@ class App extends Component {
               <Route path="/member" component={Member}/>
               <Route path="/order" component={Order}/>
               <Route path="/baby" component={Baby}>
+              </Route>
+              <Route path="/login" component={Login}>
               </Route>
             </Content>
             <Footer className="footer">

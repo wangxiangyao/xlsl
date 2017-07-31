@@ -15,12 +15,13 @@
   color: #fff;
 }
 .carsousel-current-step {
-  padding: 10px 20px 0 20px;
+  padding: 20px 40px 0 40px;
   text-align: right;
+  font-size: 24px;
   color: #3fc8cf;
 }
 .carousel-step-img-box {
-  height: 231px;
+  height: 462px;
 }
 .carousel-step-img {
   width: 100%;

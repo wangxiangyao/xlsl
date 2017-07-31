@@ -39,10 +39,12 @@ class OrderAddress extends Component {
         </div>
         <div className="order-address-action">
           <Button style={{
-            height:"30px",
+            height:"60px",
+            fontSize: "24px",
           }}>编辑地址</Button>
           <Button style={{
-            height:"30px",
+            height:"60px",
+            fontSize: "24px",
           }}>换个地址</Button>
         </div>
       </div>

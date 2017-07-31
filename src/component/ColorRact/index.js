@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
 
+import "./index.css"
+
 
 /*
 组件用法：
@@ -12,8 +14,6 @@ export default class MyInput extends Component {
   render() {
     return(
       <div {...this.props} className="color-ract" style={{
-        height: "20px",
-        width: "48px",
         backgroundColor: this.props.color,
         borderRadius: "100px",
         border: `1px solid #dbdbdb`

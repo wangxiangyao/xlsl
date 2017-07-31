@@ -1,5 +1,5 @@
 function fetch(state = {
-  baseUrl: "http://localhost:9090",
+  baseUrl: "http://192.168.5.101:9090",
 }, action) {
   switch (action.type) {
     default:

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
 
-// 包裹baby组件，判断是否为新宝宝，如果是新宝宝，就自己构建一个宝宝，并且下层组件对宝宝的修改，均使用此组件的函数，修改此组件定义的新宝宝。
+// 包裹baby组件，判断是否为新宝宝，如果是新宝宝，就自己构建一个宝宝，并且下层组件对宝宝的修改，均针对此组件的新建的宝宝对象。
 
 export default (WrappedComponent) => {
   class NewComponent extends Component {
@@ -48,8 +48,10 @@ export default (WrappedComponent) => {
     calcCompletionRate = (item) => {
       const { baby } = this.state
       const { itemNum } = this.props
+      console.log(this.props)
       let rateStep = Math.ceil(1 / itemNum * 100)
       let completionRate = baby.completion_rate
+      console.log(completionRate, rateStep)
 
       for (let [key, val] of Object.entries(item)) {
         // 如果前后值没变，就继续下一个循环
@@ -59,6 +61,7 @@ export default (WrappedComponent) => {
 
         // 如果拿到一个对象类型（数组也是对象）
         if (typeof val === "object") {
+          console.log("我是一个对象")
           if (JSON.stringify(val) === "{}" || JSON.stringify(val) === "[]") {
             // 如果为空
             completionRate -= rateStep
@@ -83,7 +86,9 @@ export default (WrappedComponent) => {
         } else {
           // 如果是普通类型的值
           if (val === "" || val === -1 || val === null) {
+            console.log(rateStep)
             completionRate -= rateStep
+            console.log(completionRate)
           } else {
             if (baby[key] === "" || baby[key] === -1 || baby[key] === null) {
               // 不为空，则判断原值是否为无效值，若为无效值，则增加
@@ -105,10 +110,15 @@ export default (WrappedComponent) => {
 
     // 处理新宝宝的改变
     handleChangeBabyItem(item, index) {
-      const { baby } = this.state;
+      let baby;
+      if (index === "new") {
+        baby = this.state.baby;
+      } else {
+        baby = this.props.baby;
+      }
+      console.log(baby)
       let source = JSON.parse(JSON.stringify(baby));
       source.completion_rate = this.calcCompletionRate(item);
-      console.log(source.completion_rate)
       this.updataObject(source, item);
       if (index === "new") {
         this.setState({

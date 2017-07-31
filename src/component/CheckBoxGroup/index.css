@@ -6,32 +6,34 @@
   display: flex;
   align-items: center;
   margin: 0;
-  padding: 12px 15px;
+  padding: 24px 30px;
   flex: 0 0 50%;
-  height: 44px;
+  height: 88px;
   border-bottom: 1px solid #d9d9d9;
 }
 /* 重写antd样式 */
 
 .ant-checkbox {
   border-radius: 50%;
-  width: 21px;
-  height: 21px;
+  width: 41px;
+  height: 41px;
   text-align: center;
   vertical-align: middle;
 }
 .ant-checkbox + span {
-  padding: 0 15px;
-  font-size: 16px;
+  padding: 0 30px;
+  font-size: 32px;
 }
 .ant-checkbox .ant-checkbox-inner {
   border-radius: 50%;
-  width: 21px;
-  height: 21px;
+  width: 41px;
+  height: 41px;
 }
 .ant-checkbox .ant-checkbox-inner::after {
-  left: 7px;
-  top: 5.5px;
+  left: 14px;
+  top: 11px;
+  width: 10px;
+  height: 16px;
 }
 .ant-checkbox-checked .ant-checkbox-inner::after {
   border-color: #3fc8cf;

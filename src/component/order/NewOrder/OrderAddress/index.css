@@ -2,21 +2,21 @@
   color: #3fc8cf;
 }
 .order-address {
-  padding: 10px;
+  padding: 20px;
 }
 .order-address .name {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 34px;
+  line-height: 48px;
   color: #000;
 }
 .order-address .phone,
 .order-address .position,
 .order-address .addr {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 28px;
+  line-height: 40px;
   color: #888;
 }
 .order-address-action {
   display: flex;
-  padding: 0 0 20px
+  padding: 0 0 40px
 }

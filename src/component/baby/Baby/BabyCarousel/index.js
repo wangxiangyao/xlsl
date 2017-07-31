@@ -143,7 +143,8 @@ export default class BabyCarousel extends Component {
                 arr.push(
                   <div className={this.state.buttonClassName[key]} key={key} >
                     <Button style={{
-                      height: "30px"
+                      height: "60px",
+                      fontSize: "24px",
                     }} onClick={this.next} data-degree={key}><span data-degree={key}>{value}</span></Button>
                   </div>
                 )

@@ -5,17 +5,18 @@
 
 .color-pick-item {
   display: flex;
-  height: 44px;
+  height: 88px;
 }
 
 .color-ract-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 .color-text {
   display: flex;
+  font-size: 24px;
   align-items: center;
   flex: 1;
 }
@@ -25,7 +26,7 @@
 }
 
 .color-action {
-  padding: 0 10px;
+  padding: 0 20px;
   color: #d9d9d9;
 }
 .color-action.active {

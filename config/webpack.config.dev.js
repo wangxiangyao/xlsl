@@ -140,6 +140,7 @@ module.exports = {
           /\.html$/,
           /\.(js|jsx)$/,
           /\.css$/,
+          /\.less$/,
           /\.json$/,
           /\.bmp$/,
           /\.gif$/,
@@ -175,9 +176,39 @@ module.exports = {
           // directory for faster rebuilds.
           plugins: [
             ['import', { libraryName: 'antd-mobile', style: true }],
+            ['import', { libraryName: 'antd', style: true }],
           ],
           cacheDirectory: true,
         },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+              ],
+            },
+          },
+        ],
       },
 
       // It is generally necessary to use the Icon component, need to configure svg-sprite-loader
@@ -209,7 +240,7 @@ module.exports = {
           {
             loader: require.resolve('less-loader'),
             options: {
-              modifyVars: { "@primary-color": "#1DA57A" },
+              modifyVars: { "@primary-color": "#3fc8cf" },
             },
           },
         ],
@@ -219,38 +250,6 @@ module.exports = {
       // "style" loader turns CSS into JS modules that inject <style> tags.
       // In production, we use a plugin to extract that CSS to a file, but
       // in development "style" loader enables hot editing of CSS.
-      {
-        test: /\.css$/,
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              // Necessary for external CSS imports to work
-              // https://github.com/facebookincubator/create-react-app/issues/2677
-              ident: 'postcss',
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                }),
-              ],
-            },
-          },
-        ],
-      },
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "file" loader exclusion list.
     ],

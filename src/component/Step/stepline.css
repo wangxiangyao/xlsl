@@ -1,7 +1,7 @@
 .step-line {
   flex: 1;
-  border-bottom: 1.5px solid #bbb;
+  border-bottom: 3px solid #bbb;
 }
 .step-line.active {
-  border-bottom: 1.5px solid #3fc8cf;
+  border-bottom: 3px solid #3fc8cf;
 }

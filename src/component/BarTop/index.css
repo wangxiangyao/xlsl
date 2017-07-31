@@ -1,6 +1,7 @@
 .bar-top-wrapper {
   display: flex;
   position: fixed;
+  top: 0;
   width: 100vw;
   background-color: #fff;
   border-bottom: 1px solid #dfdfdf;
@@ -11,17 +12,17 @@
   justify-content: center;
   align-items: center;
   flex: 0 0 auto;
-  width: 59px;
-  height: 44px;
-  font-size: 16px;
+  width: 150px;
+  height: 88px;
+  font-size: 32px;
   color: #3fc8cf;
 }
 .bar-top-text {
   flex: 1;
-  line-height: 44px;
+  line-height: 88px;
   text-align: center;
   font-family: PingFangSC-Medium;
-  font-size: 18px;
+  font-size: 36px;
   color: #333;
   font-weight: 600;
 }
@@ -30,6 +31,7 @@
   justify-content: center;
   align-items: center;
   flex: 0 0 auto;
-  width: 59px;
-  height: 44px;
+  width: 150px;
+  height: 88px;
+  font-size: 32px;
 }

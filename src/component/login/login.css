@@ -1,0 +1,36 @@
+.login-wrapper .login-form {
+  width: 100%;
+}
+.login-wrapper .login-myButton {
+  padding: 20px 40px;
+  width: 100%;
+}
+.login-wrapper .avator-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+.login-wrapper .user-avator {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+.input-code {
+  position: relative;
+}
+.code-button-wrapper {
+  height: 88px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 19px 0;
+}
+.code-button-wrapper .code-button {
+  padding: 0 25px 0 16px;
+  font-size: 34px;
+  line-height: 48px;
+  border-left: 2px solid #ddd;
+  color: #3fc8cf;
+}

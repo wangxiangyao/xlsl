@@ -20,11 +20,9 @@ export default class BabyList extends Component {
 
     return (
       <div>
-        <div className="top-bar-wrapper">
-          <BarTop text="宝宝列表">
-            <Link to="/baby/new">添加宝宝</Link>
-          </BarTop>
-        </div>
+        <BarTop text="宝宝列表">
+          <Link to="/baby/new">添加宝宝</Link>
+        </BarTop>
         <div className="baby-list">
           <Gap></Gap>
           {

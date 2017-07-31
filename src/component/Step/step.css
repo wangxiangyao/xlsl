@@ -28,9 +28,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 14px;
-  width: 39px;
-  height: 39px;
+  margin: 0 28px;
+  width: 78px;
+  height: 78px;
   background: #bbb;
   color: #fff;
   border-radius: 50%;
@@ -40,8 +40,9 @@
 }
 .step-text {
   align-self: flex-end;
-  padding: 5px 0 0;
-  width: 67px;
+  padding: 10px 0 0;
+  font-size: 24px;
+  width: 137px;
   text-align: center;
   color: #bbb;
 }

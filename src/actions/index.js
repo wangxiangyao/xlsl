@@ -4,6 +4,7 @@ export const REQUEST_BABIES = 'REQUEST_BABIES';
 export const RECEIVE_BABIES = 'RECEIVE_BABIES';
 export const ADD_BABY = 'ADD_BABY';
 export const UPDATA_BABY = 'UPDATA_BABY';
+export const UPDATA_BABIES = "UPDATA_BABIES" // 批量更新宝宝
 // 宝宝相关action生成函数
 export const invaltdateBaby = () => {
   return {
@@ -36,6 +37,80 @@ export const updataBaby = (id, baby) => {
     baby,
   }
 }
+export const updataBabies = (babies) => {
+  return {
+    type: UPDATA_BABIES,
+    babies,
+  }
+}
+
+
+// 订单操作
+export const INVALTDATE_ORDER = "INVALTDATE_ORDER";
+export const REQUEST_ORDERS = 'REQUEST_ORDERS';
+export const RECEIVE_ORDERS = 'RECEIVE_ORDERS';
+export const ADD_ORDER = 'ADD_ORDER';
+export const UPDATA_ORDER = 'UPDATA_ORDER';
+export const UPDATA_ORDERS = 'UPDATA_ORDERS';
+
+export const invaltdateOrder = () => {
+  return {
+    type: INVALTDATE_ORDER,
+  }
+}
+export const requestOrders = () => {
+  return {
+    type: REQUEST_ORDERS,
+  }
+}
+export const receiveOrders = (data) => {
+  // data为orders数组
+  return function( dispatch ) {
+    let orders = {};
+    let babies = {};
+    for (let val of data.values()) {
+      console.log(val.baby)
+      orders[val.id] = val; // 设置订单键
+      babies[val.baby.id] = val.baby ; // 设置宝宝键
+      orders[val.id].baby = val.baby.id; // 订单键中，baby字段变为此宝宝id
+    }
+    console.log(orders, babies)
+    dispatch(updataOrders(orders))
+    dispatch(updataBabies(babies))
+  }
+}
+export const addOrder = (id, order) => {
+  return {
+    type: ADD_ORDER,
+    id,
+    order,
+  }
+}
+export const updataOrder = (id, order) => {
+  return {
+    type: UPDATA_BABY,
+    id,
+    order,
+  }
+}
+export const updataOrders = (orders) => {
+  return {
+    type: UPDATA_ORDERS,
+    orders,
+  }
+}
+
+// member操作
+export const UPDATA_MEMBER = "UPDATA_MEMBER"
+export const updataMember = (member) => {
+  return {
+    type: UPDATA_MEMBER,
+    member: member,
+  }
+}
+
+
+
 
 // callback 需要返回一个fetch
 export function fetchData(option = {}, callBack) {
@@ -100,10 +175,8 @@ option：请求配置，比如
 */
 
 export function fetchIfNeeded(option, callback) {
-  console.log("我进来了")
   return (dispatch, getState) => {
     if (shouldFetch(getState(), option.name)) {
-      console.log("需要加载宝宝")
       return dispatch(fetchData(option, callback))
     } else {
       return Promise.resolve()

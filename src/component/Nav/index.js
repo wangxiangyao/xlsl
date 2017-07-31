@@ -26,11 +26,6 @@ export default class Navigation extends Component {
               <span className="nav-text">关于小鹿</span>
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="3" className="nav-item">
-            <NavLink to="/order/new" className="nav-link new-order-button">
-              <i className="icon icon-yifu- new-order-icon"></i>
-            </NavLink>
-          </Menu.Item>
           <Menu.Item key="4" className="nav-item">
             <NavLink to="/order" className="nav-link">
               <i className="icon icon-hezi"></i>

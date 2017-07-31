@@ -1,0 +1,7 @@
+.member-action{
+  font-size: 24px;
+}
+/* 为了覆盖antd的样式，只能important了，也是拼了。 */
+.member-action .member-item {
+  font-size: 24px !important;
+}

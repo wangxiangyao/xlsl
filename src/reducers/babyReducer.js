@@ -5,6 +5,7 @@ import {
   RECEIVE_BABIES,
   ADD_BABY,
   UPDATA_BABY,
+  UPDATA_BABIES,
 } from '../actions';
 
 function requestBabies(state, action) {
@@ -59,7 +60,11 @@ function addBaby(state, action) {
   return Object.assign({}, state, {
     allId: [...state.allId, action.id],
     byId: {
-      [action.id]: action.baby,
+      ...state.byId,
+      [action.id]: {
+        ...action.baby,
+        id: action.id,
+      }
     }
   })
 }
@@ -70,6 +75,29 @@ function updataBaby(state, action) {
       ...state.byId,
       [action.id]: action.baby,
     }
+  })
+}
+
+function merge(state, item) {
+  let allId = [],
+      byId = {
+        ...item,
+      };
+  for (let key of Object.keys(item)) {
+    allId.push(Number(key));
+  }
+  return Object.assign({}, state, {
+    allId: Array.from(new Set([...state.allId, ...allId])),
+    byId: {
+      ...state.byId,
+      ...byId,
+    }
+  })
+}
+
+function updataBabies(state, action) {
+  return Object.assign({}, state, {
+    ...merge(state, action.babies)
   })
 }
 
@@ -95,6 +123,8 @@ function babies(state = {
       return addBaby(state, action);
     case UPDATA_BABY:
       return updataBaby(state, action);
+    case UPDATA_BABIES:
+      return updataBabies(state, action);
     default:
       return state
   }

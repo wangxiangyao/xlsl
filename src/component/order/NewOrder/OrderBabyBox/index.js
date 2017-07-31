@@ -8,6 +8,7 @@ import Icon from "antd/lib/icon"
 import { Link } from "react-router-dom"
 import "antd/lib/icon/style/css"
 
+
 import "./index.css"
 
 class OrderBabyBox extends Component {
@@ -31,12 +32,16 @@ class OrderBabyBox extends Component {
       dispatch(requestBabies())
       fetch(url, option)
       .then((res) => {
-        console.log(1);
-        return res.json();
+        if (res.ok) {
+          return res.json();
+        } else {
+          console.log(res.statusText);
+        }
       }, error => console.log("请求发生错误", error))
       .then(
         (json) => {
           let data = json.data;
+          console.log(json)
           dispatch(receiveBabies(data))
         }
       )
@@ -59,8 +64,6 @@ class OrderBabyBox extends Component {
   render() {
 
     const { babies } = this.props
-    console.log(babies)
-
     // 判空处理
     if (this.isEmptyObject(babies)) {
       return (
@@ -78,6 +81,8 @@ class OrderBabyBox extends Component {
         </div>
         {
           (() => {
+            // 这里显示一个个宝宝，一个的时候，比较大，两个小点，三个和三个以上在小点。
+            // 因为一行自适应，所以，在三个以上的时候，要有空的div填充位置，保证每行都是三个
             let arr = [],
                 arr1 = [], // 中间量
                 i = 0; // 用来计数的，多个宝宝，三个一组往外传
@@ -90,12 +95,23 @@ class OrderBabyBox extends Component {
               arr1.push(val)
               i++
             }
+            if (arr.length > 1 && arr1.length > 0) {
+              for (let i = arr1.length; i < 3; i ++) {
+                arr1.push(null);
+              }
+            }
             arr.push(arr1);
             return arr.map((items, index) => {
+              let aKey = -1
               return (
                 <div className="baby-stage" key={index}>
                   {
-                    items.map((item) => {
+                    items.map((item, index) => {
+                      if (item === null) {
+                        return <div style={{
+                          flex: "0 0 33.3%"
+                        }} key={index}></div>
+                      }
                       return (
                         <StageBox
                           handleChangeOrderBaby={this.props.handleChangeOrderBaby}

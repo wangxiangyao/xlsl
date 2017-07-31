@@ -5,13 +5,13 @@
 }
 .footer {
   flex:0 0 auto;
-  height: 50px;
+  height: 100px;
   padding: 0;
 }
 .stage {
   flex: 1;
   overflow: auto;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 100px);
   background-color: #f5f5f9;
-  padding: 0 0 16px;
+  padding: 0 0 32px;
 }

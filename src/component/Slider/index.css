@@ -1,11 +1,11 @@
 .my-slider-wrapper {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 32px;
 }
 .my-slider-text {
-  font-size: 12px;
-  line-height: 22px;
+  font-size: 24px;
+  line-height: 44px;
   color: #333;
 }
 
@@ -25,4 +25,31 @@
 }
 .my-slider-wrapper .ant-slider-track {
   background-color: #3fc8cf;
+}
+.my-slider-wrapper .ant-slider-with-marks{
+  margin-bottom: 56px;
+}
+.my-slider-wrapper .ant-slider {
+  margin: 20px 12px;
+  padding: 8px 0;
+  height: 24px;
+}
+.my-slider-wrapper .ant-slider-rail{
+  height: 8px;
+}
+.my-slider-wrapper .ant-slider-track {
+  height: 8px;
+}
+.my-slider-wrapper .ant-slider-step {
+  height: 8px;
+}
+.my-slider-wrapper .ant-slider-handle {
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -10px;
+}
+.my-slider-wrapper .ant-slider-mark {
+  top: 28px;
+  font-size: 24px;
 }

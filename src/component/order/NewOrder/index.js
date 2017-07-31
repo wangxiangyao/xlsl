@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import { fetchData } from '../../../actions'
+import { Link } from "react-router-dom"
 
 import Gap from "../../Gap"
 import OrderBabyBox from "./OrderBabyBox"
@@ -12,6 +13,7 @@ import "antd/lib/input/style/css"
 import OrderAddress from "./OrderAddress"
 import Title from "../../Title"
 import Button from "../../Button"
+import BarTop from "../../BarTop"
 
 import "./index.css"
 import TimePicker from "../../TimePicker"
@@ -112,6 +114,9 @@ class NewOrder extends Component {
 
     return (
       <div className="new-order">
+        <BarTop text="预定小衣盒">
+          <Link to="/member">个人中心</Link>
+        </BarTop>
         <div className="new-order-top">
           快来为宝贝预定TA专属的小衣盒吧！
         </div>
@@ -129,8 +134,9 @@ class NewOrder extends Component {
         <Gap />
         <TextArea onBlur={this.handleChangeOrderMessage.bind(this)}
           style={{
-            height: "135px",
-            fontSize: "14px",
+            height: "270px",
+            fontSize: "28px",
+            padding: "8px 14px",
           }}
           placeholder="如果有任何特殊需求（乐器考级，宝贝生日，毕业典礼等）可以在这里留言哦~"></TextArea>
         <Gap />
@@ -139,7 +145,7 @@ class NewOrder extends Component {
         <Title text="小鹿森林会员" style={{
           color: "#3fc8cf",
           fontWeight: 600,
-          fontSize: "14px",
+          fontSize: "28px",
         }} />
         {
           (() => {
@@ -158,7 +164,7 @@ class NewOrder extends Component {
             if (member.isVip) {
               return (
                 <Button
-                  style={{fontSize: "18px", padding: "11px"}}
+                  style={{fontSize: "36px", padding: "22px"}}
                   onClick={this.handleCreateOrder.bind(this)}>
                   立即预定
                 </Button>

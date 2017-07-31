@@ -22,18 +22,19 @@ export default class MyInput extends Component {
     }
     // 如果不是name，则转换成数组，以后如果有某些非数组属性，也要写进来
 
-    this.props.handleChangeBabyItem(item);
+    this.props.onChange(item);
   }
 
   render() {
     return(
-      <Input addonBefore={this.props.addonBefore} placeholder={this.props.placeholder} className="my-input" defaultValue={this.props.item === null ? "" : this.props.item} onBlur={this.handleChange}></Input>
+        <Input addonBefore={this.props.addonBefore} placeholder={this.props.placeholder} className="my-input" defaultValue={this.props.item === null ? "" : this.props.item} onBlur={this.handleChange}
+          defaultValue={this.props.value}></Input>
     )
   }
 }
 
 MyInput.propTypes = {
   propName: PropTypes.string, // 操作的属性名字
-  handleChangeBabyItem:  PropTypes.func,
+  onChange:  PropTypes.func,
   // 为辨识item的类型
 }

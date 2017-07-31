@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  height: 44px;
+  height: 88px;
   border-bottom: none;
 }
 .order-baby-box > .title > .text {
@@ -20,6 +20,6 @@
 .order-baby-box .baby-stage {
   display: flex;
   justify-content: space-around;
-  padding: 0 10px;
+  padding: 0 20px;
   background-color: #fff;
 }

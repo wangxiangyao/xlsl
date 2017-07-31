@@ -1,0 +1,31 @@
+
+.ant-upload-select-picture-card i {
+  font-size: 56px;
+  color: #999;
+}
+
+.ant-upload-select-picture-card .ant-upload-text {
+  margin-top: 16px;
+  font-size: 24px;
+  color: #666;
+}
+
+.uploadimg-wrapper {
+  padding: 20px;
+}
+
+/* 重写antd样式 */
+.uploadimg-wrapper .ant-upload.ant-upload-select-picture-card {
+  width: 192px;
+  height: 192px;
+}
+.uploadimg-wrapper .ant-upload-list-picture-card .ant-upload-list-item {
+  width: 192px;
+  height: 192px;
+}
+.uploadimg-wrapper .ant-upload-list-item-actions .anticon {
+  width: 32px;
+}
+.uploadimg-wrapper .ant-upload-list-item-actions .anticon::before{
+  font-size: 32px;
+}

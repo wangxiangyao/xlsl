@@ -9,7 +9,7 @@ export default class NavLink extends Component {
       <Link
         {...this.props}
         style={{
-          fontSize: "10px",
+          fontSize: "24px",
           color: "#3FC8CF",
           textDecoration: "none",
         }}

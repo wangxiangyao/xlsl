@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
 import { connect } from 'react-redux'
-import { addBaby, fetchData } from '../../../../actions'
+import { addBaby, fetchData, invaltdateBaby } from '../../../../actions'
 
 import Select from "../../../Select"
 import Title from "../../../Title"
@@ -49,7 +49,6 @@ class BabyBox extends Component {
                 }
               },
               (url, option) => {
-                console.log(option)
                 fetch(url, option)
                 .then((res) => {
                   if (res.ok) {
@@ -57,8 +56,8 @@ class BabyBox extends Component {
                   }
                 })
                 .then((json) => {
-                  console.log(json, myBaby)
-                  // dispatch(addBaby(id, baby))
+                  console.log(json)
+                  dispatch(addBaby(json.data, baby))
                   history.push("/order/new")
                 })
                 .catch((e) => {
@@ -132,7 +131,7 @@ class BabyBox extends Component {
         <Gap></Gap>
         <Title text="期待在衣盒中放入什么？" isRequired={false}></Title>
         <CheckBoxGroup option={{map: "sundry", item: baby.sundry}} propName="sundry" handleChange={handleChangeBabyItem}></CheckBoxGroup>
-        <Button style={{fontSize: "18px", padding: "11px"}} onClick={this.endProcess.bind(this)}>
+        <Button style={{fontSize: "36px", padding: "22px"}} onClick={this.endProcess.bind(this)}>
           好了，下一步
         </Button>
       </div>

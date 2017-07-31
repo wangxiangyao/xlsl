@@ -5,19 +5,19 @@
 }
 .skin-color-option {
   display: flex;
-  height: 44px;
+  height: 88px;
 }
 .skin-color, .skin-text, .icon-skin {
   display: flex;
   align-items: center;
-  padding: 12px 0 ;
+  padding: 24px 0 ;
 }
 .skin-color, .icon-skin {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .icon-skin {
-  font-size: 16px;
+  font-size: 32px;
   color: #3fc8cf;
 }
 .icon-skin.hidden {
@@ -25,6 +25,6 @@
 }
 .skin-text {
   flex: 1;
-  font-size: 16px;
+  font-size: 32px;
   color: #333;
 }

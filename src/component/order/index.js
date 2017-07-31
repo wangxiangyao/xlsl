@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import OrderList from "./OrderList";
 import NewOrder from "./NewOrder"
 import Order from "./Order"
-import { fetchIfNeeded } from '../../actions'
+import { fetchIfNeeded, requestOrders, receiveOrders } from '../../actions'
 
 class OrderDump extends Component {
   constructor(props) {
@@ -15,7 +15,35 @@ class OrderDump extends Component {
   }
 
   componentDidMount() {
-
+    const { dispatch } = this.props
+    dispatch(fetchIfNeeded(
+      {
+        name: "orders",
+        path: "/order/",
+        config: {
+          method: "POST",
+        }
+      },
+      (url, option) => {
+        dispatch(requestOrders())
+        fetch(url, option)
+        .then(
+          (res) => {
+            if (res.ok) {
+              console.log(res)
+              return res.json()
+            }
+          }
+        )
+        .then(
+          (json) => {
+            console.log(json)
+            dispatch(receiveOrders(json.data.list))
+          }
+        )
+        .catch((e) => console.log(e))
+      }
+    ))
   }
 
   render() {

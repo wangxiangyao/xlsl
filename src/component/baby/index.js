@@ -90,6 +90,7 @@ class BabyDump extends Component {
   */
   handleChangeBabyItem = (index, baby) => {
     const { dispatch } = this.props
+    console.log(baby)
     dispatch(updataBaby(index, baby))
     // const { babies } = this.state;
     //
@@ -266,7 +267,7 @@ class BabyDump extends Component {
               break;
             }
             return (
-              <Baby {...props} baby={baby} index={id}  handleChangeBabyItem={this.handleChangeBabyItem.bind(this)}></Baby>
+              <Baby {...props} baby={baby} index={id} itemNum={babies.itemNum}  handleChangeBabyItem={this.handleChangeBabyItem.bind(this)}></Baby>
             )
           }} />
         </div>
